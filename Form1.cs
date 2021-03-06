@@ -53,6 +53,8 @@ namespace CookieApp
             {
                 if (!this.warmLabel.Visible)
                     this.warmLabel.Visible = true;
+
+                this.warmLabel.Text = "Нужно заполнить все поля";
             }
             else
             {
@@ -70,6 +72,9 @@ namespace CookieApp
                 }
                 else
                 {
+                    if (!this.warmLabel.Visible)
+                        this.warmLabel.Visible = true;
+
                     this.warmLabel.Text = "Такого пользователя не существует";
                 }
             }
@@ -95,6 +100,10 @@ namespace CookieApp
         }
 
         
+        private void ToClearWarmLable()
+        {
+            this.warmLabel.Text = "";
+        }
 
         private void ToHiddenRegInputs()
         {
@@ -110,6 +119,8 @@ namespace CookieApp
 
             this.ToRegBtn.Visible       = false;
             this.backToLoginBtn.Visible = false;
+
+            ToClearWarmLable();
 
             this.warmLabel.Visible      = false;
         }
@@ -129,6 +140,8 @@ namespace CookieApp
             this.ToRegBtn.Visible       = true;
             this.backToLoginBtn.Visible = true;
 
+            ToClearWarmLable();
+
             this.warmLabel.Visible      = false;
         }
 
@@ -142,6 +155,8 @@ namespace CookieApp
 
             this.loginBtn.Visible   = false;
             this.RegBtn.Visible     = false;
+
+            ToClearWarmLable();
 
             this.warmLabel.Visible  = false;
         }
@@ -157,9 +172,16 @@ namespace CookieApp
             this.loginBtn.Visible   = true;
             this.RegBtn.Visible     = true;
 
+            ToClearWarmLable();
+
             this.warmLabel.Visible  = false;
         }
 
+        /// <summary>
+        /// Регистрация нового пользователя
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToRegBtn_Click(object sender, EventArgs e)
         {
             var userLogin       = this.RegLoginInput.Text.Trim();
@@ -171,9 +193,14 @@ namespace CookieApp
             {
                 if (!this.warmLabel.Visible)
                     this.warmLabel.Visible = true;
+
+                this.warmLabel.Text = "Нужно заполнить все поля";
             }
             else if(userRepPassword != userPassword)
             {
+                if (!this.warmLabel.Visible)
+                    this.warmLabel.Visible = true;
+
                 this.warmLabel.Text = "Пароли не совпадают";
             }
             else 
@@ -183,6 +210,9 @@ namespace CookieApp
                     "AND cookiedb.dbo.users.psw = '" + userPassword + "'";
                 if (db.IsRowExist(sqlQuery))
                 {
+                    if (!this.warmLabel.Visible)
+                        this.warmLabel.Visible = true;
+
                     this.warmLabel.Text = "Пользователь с такими данными уже существует";
                 }
                 else
