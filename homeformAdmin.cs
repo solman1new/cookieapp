@@ -21,8 +21,7 @@ namespace CookieApp
         public homeformAdmin()
         {
             InitializeComponent();
-            this.ToHiddeneDetaliOrder();
-            this.ToHiddenListOrder();
+            
         }
 
         private void homeformAdmin_Load(object sender, EventArgs e)
@@ -40,6 +39,8 @@ namespace CookieApp
 
             ToHiddenListOrder();
             ToHiddenMakeOrder();
+            ToHiddeneDetaliOrder();
+            ToHiddenListOrder();
 
         }
 
@@ -50,13 +51,20 @@ namespace CookieApp
 
         private void ToHiddenListOrder()
         {
-            this.listOrder.Visible = false;
+            this.listOrder.Visible        = false;
+            this.searchBtn.Visible        = false;
+            this.searchOrderInput.Visible = false;
+            this.label1.Visible           = false;
         }
 
         private void ToVisibleListOrder()
         {
-            this.listOrder.Visible = true;
+            this.listOrder.Visible        = true;
+            this.searchBtn.Visible        = true;
+            this.searchOrderInput.Visible = true;
+            this.label1.Visible           = true;
         }
+
 
         private void ToHiddeneDetaliOrder()
         {
@@ -100,36 +108,12 @@ namespace CookieApp
 
         private void ToHiddenMakeOrder()
         {
-            //this.AdressTrLabel.Visible        = false;
-            //this.CountGoodsLabel.Visible      = false;
-            //this.GoodsLabel.Visible           = false;
-            //this.PhoneLabel.Visible           = false;
-
-            //this.choiseGoods.Visible          = false;
-            //this.phone.Visible                = false;
-            //this.countGoods.Visible           = false;
-            //this.addressTr.Visible            = false;
-
-            //this.goOrderBtn.Visible           = false;
-
-            //this.searchOrderInput.Visible     = false;
+            
         }
 
         private void ToVisibleMakeOrder()
         {
-            //this.AdressTrLabel.Visible        = true;
-            //this.CountGoodsLabel.Visible      = true;
-            //this.GoodsLabel.Visible           = true;
-            //this.PhoneLabel.Visible           = true;
-
-            //this.choiseGoods.Visible          = true;
-            //this.phone.Visible                = true;
-            //this.countGoods.Visible           = true;
-            //this.addressTr.Visible            = true;
-
-            //this.goOrderBtn.Visible           = true;
-
-            //this.searchOrderInput.Visible     = true;
+            
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -200,6 +184,12 @@ namespace CookieApp
             return name;
         }
 
+
+        /// <summary>
+        /// Выводим в список все заказы со статусом 0
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkOrderBtn_Click(object sender, EventArgs e)
         {
             this.listOrder.Items.Clear();
@@ -224,11 +214,25 @@ namespace CookieApp
             }
         }
 
+        /// <summary>
+        /// Запрос на апдейт строки заказа.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AcceptButton_Click(object sender, EventArgs e)
         {
+            /*
+             * 0 - запрос не обратботан менеджером
+             * 1 - менеджер обработал запрос, ожидается пока клиент подтвердит получение товара
+             * 2 - пользователь подтвердил получение
+            */
+            
             var statusQuery = 0;
             MessageBox.Show(dateTimePicker1.Value.ToString("yyyy MM dd"));
-            var sqlQuery = "UPDATE cookiedb.dbo.orderlist SET cookiedb.dbo.orderlist.date_get = '" + dateTimePicker1.Value.ToString("yyyy MM dd") + "' WHERE cookiedb.dbo.orderlist.id = " + idOrder;
+            var sqlQuery = "UPDATE cookiedb.dbo.orderlist SET" +
+                " cookiedb.dbo.orderlist.date_get = '" + dateTimePicker1.Value.ToString("yyyy MM dd") + "'" + // ставим ту дату, которую указал менджер
+                ", cookiedb.dbo.orderlist.status = 1" + // ставим статус обработан
+                "cookiedb.dbo.orderlist.status=1 WHERE cookiedb.dbo.orderlist.id = " + idOrder;
 
             using (SqlConnection conn = new SqlConnection(db.GetConnectionString()))
             {
@@ -242,6 +246,12 @@ namespace CookieApp
             else MessageBox.Show("Вася, ты проблема ходячая. Почему опять не работает?!");
         }
 
+
+        /// <summary>
+        /// Поиск заказов по idшнику или по логину пользователя.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void searchBtn_Click(object sender, EventArgs e)
         {
             this.listOrder.Items.Clear();
@@ -253,7 +263,7 @@ namespace CookieApp
                 var sqlQuery = "SELECT cookiedb.dbo.orderlist.id " +
                     "FROM cookiedb.dbo.orderlist " +
                     "WHERE cookiedb.dbo.orderlist.client_login='" + searchOrderInput.Text.Trim() +"'" +
-                    "OR cokiedb.dbo.orderlist.id=" + searchOrderInput.Text.Trim();
+                    "OR cookiedb.dbo.orderlist.id=" + searchOrderInput.Text.Trim();
 
                 using (SqlConnection conn = new SqlConnection(db.GetConnectionString()))
                 {
