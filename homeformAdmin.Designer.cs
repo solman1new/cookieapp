@@ -30,8 +30,6 @@ namespace CookieApp
         private void InitializeComponent()
         {
             this.closeButton = new System.Windows.Forms.PictureBox();
-            this.checkOrderBtn = new System.Windows.Forms.Button();
-            this.createOrderBtn = new System.Windows.Forms.Button();
             this.searchOrderInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listOrder = new System.Windows.Forms.ListBox();
@@ -51,16 +49,7 @@ namespace CookieApp
             this.countViewLb = new System.Windows.Forms.Label();
             this.addressLb = new System.Windows.Forms.Label();
             this.searchBtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.checkOrderBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,35 +63,6 @@ namespace CookieApp
             this.closeButton.TabIndex = 0;
             this.closeButton.TabStop = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
-            // checkOrderBtn
-            // 
-            this.checkOrderBtn.BackColor = System.Drawing.Color.Maroon;
-            this.checkOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.checkOrderBtn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkOrderBtn.ForeColor = System.Drawing.Color.White;
-            this.checkOrderBtn.Location = new System.Drawing.Point(140, 12);
-            this.checkOrderBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.checkOrderBtn.Name = "checkOrderBtn";
-            this.checkOrderBtn.Size = new System.Drawing.Size(145, 31);
-            this.checkOrderBtn.TabIndex = 31;
-            this.checkOrderBtn.Text = "Проверка заказа";
-            this.checkOrderBtn.UseVisualStyleBackColor = false;
-            this.checkOrderBtn.Click += new System.EventHandler(this.checkOrderBtn_Click);
-            // 
-            // createOrderBtn
-            // 
-            this.createOrderBtn.BackColor = System.Drawing.Color.Maroon;
-            this.createOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.createOrderBtn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createOrderBtn.ForeColor = System.Drawing.Color.White;
-            this.createOrderBtn.Location = new System.Drawing.Point(16, 12);
-            this.createOrderBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.createOrderBtn.Name = "createOrderBtn";
-            this.createOrderBtn.Size = new System.Drawing.Size(110, 31);
-            this.createOrderBtn.TabIndex = 30;
-            this.createOrderBtn.Text = "Создать заказ";
-            this.createOrderBtn.UseVisualStyleBackColor = false;
             // 
             // searchOrderInput
             // 
@@ -314,132 +274,27 @@ namespace CookieApp
             this.searchBtn.UseVisualStyleBackColor = false;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
-            // label2
+            // checkOrderBtn
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(1049, 216);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 16);
-            this.label2.TabIndex = 88;
-            this.label2.Text = "count";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.Color.DarkRed;
-            this.label3.Location = new System.Drawing.Point(967, 348);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 16);
-            this.label3.TabIndex = 87;
-            this.label3.Text = "Адресс";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(1067, 307);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 16);
-            this.label4.TabIndex = 86;
-            this.label4.Text = "login";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(1034, 260);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 16);
-            this.label5.TabIndex = 85;
-            this.label5.Text = "phone";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(1019, 348);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 16);
-            this.label6.TabIndex = 84;
-            this.label6.Text = "address";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(1030, 174);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 16);
-            this.label7.TabIndex = 83;
-            this.label7.Text = "godos";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.ForeColor = System.Drawing.Color.DarkRed;
-            this.label9.Location = new System.Drawing.Point(967, 307);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(94, 16);
-            this.label9.TabIndex = 81;
-            this.label9.Text = "Логин клиента";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.ForeColor = System.Drawing.Color.DarkRed;
-            this.label10.Location = new System.Drawing.Point(967, 260);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 16);
-            this.label10.TabIndex = 80;
-            this.label10.Text = "Телефон";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.ForeColor = System.Drawing.Color.DarkRed;
-            this.label11.Location = new System.Drawing.Point(967, 216);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(76, 16);
-            this.label11.TabIndex = 79;
-            this.label11.Text = "Количество";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.ForeColor = System.Drawing.Color.DarkRed;
-            this.label12.Location = new System.Drawing.Point(967, 174);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(57, 16);
-            this.label12.TabIndex = 78;
-            this.label12.Text = "Изделие";
+            this.checkOrderBtn.BackColor = System.Drawing.Color.Maroon;
+            this.checkOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.checkOrderBtn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkOrderBtn.ForeColor = System.Drawing.Color.White;
+            this.checkOrderBtn.Location = new System.Drawing.Point(12, 13);
+            this.checkOrderBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkOrderBtn.Name = "checkOrderBtn";
+            this.checkOrderBtn.Size = new System.Drawing.Size(145, 31);
+            this.checkOrderBtn.TabIndex = 31;
+            this.checkOrderBtn.Text = "Проверка заказа";
+            this.checkOrderBtn.UseVisualStyleBackColor = false;
+            this.checkOrderBtn.Click += new System.EventHandler(this.checkOrderBtn_Click);
             // 
             // homeformAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1622, 621);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label12);
+            this.ClientSize = new System.Drawing.Size(925, 624);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.countViewLb);
             this.Controls.Add(this.addressLb);
@@ -460,7 +315,6 @@ namespace CookieApp
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchOrderInput);
             this.Controls.Add(this.checkOrderBtn);
-            this.Controls.Add(this.createOrderBtn);
             this.Controls.Add(this.closeButton);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ForeColor = System.Drawing.Color.DarkRed;
@@ -479,8 +333,6 @@ namespace CookieApp
         #endregion
 
         private System.Windows.Forms.PictureBox closeButton;
-        private System.Windows.Forms.Button checkOrderBtn;
-        private System.Windows.Forms.Button createOrderBtn;
         private System.Windows.Forms.TextBox searchOrderInput;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listOrder;
@@ -500,15 +352,6 @@ namespace CookieApp
         private System.Windows.Forms.Label countViewLb;
         private System.Windows.Forms.Label addressLb;
         private System.Windows.Forms.Button searchBtn;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button checkOrderBtn;
     }
 }

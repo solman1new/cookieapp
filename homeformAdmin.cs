@@ -120,7 +120,7 @@ namespace CookieApp
         {
             
             idOrder = Convert.ToInt32(this.listOrder.SelectedItem.ToString());
-            MessageBox.Show(Convert.ToString(idOrder));
+            //MessageBox.Show(Convert.ToString(idOrder));
             fillFiledOnSelected();
         }
 
@@ -152,6 +152,7 @@ namespace CookieApp
                         this.AcceptButton.Enabled = false;
                         this.dateTimePicker1.Visible = false;
                         this.setDateLb.Text = reader.GetString(7);
+                        this.AcceptButton.BackColor = Color.Yellow;
                     }
 
                     this.IdViewLb.Text = Convert.ToString(reader.GetInt32(0));

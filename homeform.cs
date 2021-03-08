@@ -173,10 +173,12 @@ namespace CookieApp
 
         private void GetListOrders()
         {
-            var sqlQuery = "SELECT * FROM cookie.dbo.orderlist WHERE cookie.dbo.orderlist.client_login='" + userLogin + "'";
+            var sqlQuery = "SELECT * FROM cookiedb.dbo.orderlist WHERE cookiedb.dbo.orderlist.client_login='" + userLogin + "'";
 
             using (SqlConnection conn = new SqlConnection(db.GetConnectionString()))
             {
+                conn.Open();
+
                 SqlCommand cmd = new SqlCommand(sqlQuery, conn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -187,6 +189,7 @@ namespace CookieApp
                 }
 
                 reader.Close();
+                conn.Close();
             }
         }
 
@@ -279,10 +282,11 @@ namespace CookieApp
 
         private void choiseGoods_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var sqlQuery = "SELECT * FROM cookie.dbo.orderlist WHERE cookie.dbo.orderlist.id = " + listOrder.SelectedItem.ToString();
+            var sqlQuery = "SELECT * FROM cookiedb.dbo.orderlist WHERE cookiedb.dbo.orderlist.id = " + listOrder.SelectedItem.ToString();
 
             using(SqlConnection conn = new SqlConnection(db.GetConnectionString()))
             {
+                conn.Open();
                 SqlCommand cmd = new SqlCommand(sqlQuery, conn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -294,6 +298,8 @@ namespace CookieApp
                     this.idOrderLabel.Text = Convert.ToString(reader[0]);
 
                 }
+                reader.Close();
+                conn.Close();
             }
         }
 
