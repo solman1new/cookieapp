@@ -243,5 +243,17 @@ namespace CookieApp
             this.ToHiddenRegInputs();
             this.ToVisibleLoginInputs();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            homeform hf = new homeform(db, "1", this);
+            hf.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            homeformAdmin hfA = new homeformAdmin(db, "solman1new", this);
+            hfA.Show();
+        }
     }
 }

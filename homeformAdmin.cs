@@ -124,6 +124,9 @@ namespace CookieApp
             fillFiledOnSelected();
         }
 
+        /// <summary>
+        /// Заполняем поля, если выбрали заказ из списка
+        /// </summary>
         private void fillFiledOnSelected()
         {
             ToVisibleDetaliOrder();
