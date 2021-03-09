@@ -29,13 +29,9 @@ namespace CookieApp
 
         private void autorizationForm_Load(object sender, EventArgs e)
         {
-
+            /// pih poh
         }
 
-
-        ///
-        /// ПРОЧИТАЛ - ПЕТУХ :D ЫАЫАЫАЫАЫАЫАЫАЫАЫА
-        ///
 
         /// <summary>
         /// Check input fileds and check on exist in db
