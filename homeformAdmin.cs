@@ -146,19 +146,30 @@ namespace CookieApp
                 while (reader.Read())
                 {
                     if (reader.GetInt32(6) == 0)
+                    {
                         this.AcceptButton.Enabled = true;
-                    else
+                    }
+                    else if (reader.GetInt32(6) == 1)
                     {
                         this.AcceptButton.Enabled = false;
                         this.dateTimePicker1.Visible = false;
                         this.setDateLb.Text = reader.GetString(7);
                         this.AcceptButton.BackColor = Color.Yellow;
                     }
+                    else
+                    {
+                        this.AcceptButton.Enabled = false;
+                        this.dateTimePicker1.Visible = false;
+                        this.setDateLb.Text = reader.GetString(7);
+                        this.AcceptButton.Text = "Заказ уже забрали";
+                        this.AcceptButton.BackColor = Color.DarkRed;
+                    }
 
                     this.IdViewLb.Text = Convert.ToString(reader.GetInt32(0));
                     this.countViewLb.Text = Convert.ToString(reader.GetInt32(2));
                     this.phoneViewLb.Text = reader.GetString(4);
                     this.loginViewLb.Text = reader.GetString(5);
+                    this.addressViewLb.Text = reader.GetString(4);
                 }
 
                 reader.Close();

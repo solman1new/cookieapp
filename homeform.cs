@@ -287,27 +287,12 @@ namespace CookieApp
 
         private void AgreeOrderBtn_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void choiseGoods_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //var sqlQuery = "SELECT * FROM cookiedb.dbo.orderlist WHERE cookiedb.dbo.orderlist.id = " + this.choiseGoods.SelectedItem.ToString();
-
-            //using(SqlConnection conn = new SqlConnection(db.GetConnectionString()))
-            //{
-            //    conn.Open();
-            //    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-
-            //    SqlDataReader reader = cmd.ExecuteReader();
-            //    while(reader.Read())
-            //    {
-                    
-
-            //    }
-            //    reader.Close();
-            //    conn.Close();
-            //}
+            
         }
 
         private void goOrderBtn_Click(object sender, EventArgs e)
