@@ -59,10 +59,15 @@ namespace CookieApp
             var goods = this.choiseGoods.Text;
             var countGoods = Convert.ToInt32(this.countGoods.Text.Trim());
             var addressClient = this.addressTr.Text.Trim();
-            var phoneClient = this.addressTr.Text.Trim();
+            var phoneClient = this.phone.Text.Trim();
             var idGoods = GetIdGoods(goods);
 
-            var sqlQuery = "INSERT INTO `orderlist` (`id_goods`, `count_goods`, `address_client`, `phone_client`, `client_login`, `status`) VALUES(" +
+            var sqlQuery = "INSERT INTO cookiedb.dbo.orderlist (cookiedb.dbo.orderlist.id_goods, " +
+                "cookiedb.dbo.orderlist.count_goods, " +
+                "cookiedb.dbo.orderlist.address_client, " +
+                "cookiedb.dbo.orderlist.phone_client, " +
+                "cookiedb.dbo.orderlist.client_login, " +
+                "cookiedb.dbo.orderlist.status) VALUES(" +
                     + idGoods        +
                 "," + countGoods     + "," +
                 "'" + addressClient  + "'," +
@@ -90,12 +95,13 @@ namespace CookieApp
         private int GetIdGoods(string nameGoods)
         {
 
-            var sqlQuery = "SELECT id FROM goodslist WHERE name='" + nameGoods + "'";
+            var sqlQuery = "SELECT cookiedb.dbo.goodslist.id id FROM cookiedb.dbo.goodslist WHERE cookiedb.dbo.goodslist.name='" + nameGoods + "'";
 
             var reulstID = 0;
 
             using (SqlConnection conn = new SqlConnection(db.GetConnectionString()))
             {
+                conn.Open();
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -104,6 +110,7 @@ namespace CookieApp
                     reulstID = reader.GetInt32(0);
 
                 reader.Close();
+                conn.Close();
             }
 
 
@@ -115,19 +122,22 @@ namespace CookieApp
 
             this.choiseGoods.Items.Clear();
 
-            var sqlQueyr = "SELECT * FROM `goodsList`";
+            var sqlQueyr = "SELECT * FROM cookiedb.dbo.goodsList";
 
             using(SqlConnection conn = new SqlConnection(db.GetConnectionString()))
             {
+                conn.Open();
+
                 SqlCommand cmd = new SqlCommand(sqlQueyr, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while(reader.Read())
                 {
-                    this.choiseGoods.Items.Add(Convert.ToInt32(reader.GetInt32(1)));
+                    this.choiseGoods.Items.Add(Convert.ToString(reader.GetValue(1)));
                 }
 
                 reader.Close();
+                conn.Close();
             }
         }
 
@@ -282,25 +292,22 @@ namespace CookieApp
 
         private void choiseGoods_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var sqlQuery = "SELECT * FROM cookiedb.dbo.orderlist WHERE cookiedb.dbo.orderlist.id = " + listOrder.SelectedItem.ToString();
+            //var sqlQuery = "SELECT * FROM cookiedb.dbo.orderlist WHERE cookiedb.dbo.orderlist.id = " + this.choiseGoods.SelectedItem.ToString();
 
-            using(SqlConnection conn = new SqlConnection(db.GetConnectionString()))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+            //using(SqlConnection conn = new SqlConnection(db.GetConnectionString()))
+            //{
+            //    conn.Open();
+            //    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                while(reader.Read())
-                {
-                    this.idOrderLabel.Text = Convert.ToString(reader[0]);
-                    this.orderGoodsLabel.Text = Convert.ToString(reader[0]);
-                    this.idOrderLabel.Text = Convert.ToString(reader[0]);
-                    this.idOrderLabel.Text = Convert.ToString(reader[0]);
+            //    SqlDataReader reader = cmd.ExecuteReader();
+            //    while(reader.Read())
+            //    {
+                    
 
-                }
-                reader.Close();
-                conn.Close();
-            }
+            //    }
+            //    reader.Close();
+            //    conn.Close();
+            //}
         }
 
         private void goOrderBtn_Click(object sender, EventArgs e)
