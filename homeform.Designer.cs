@@ -343,7 +343,7 @@ namespace CookieApp
             this.AgreeOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AgreeOrderBtn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AgreeOrderBtn.ForeColor = System.Drawing.Color.White;
-            this.AgreeOrderBtn.Location = new System.Drawing.Point(248, 593);
+            this.AgreeOrderBtn.Location = new System.Drawing.Point(256, 570);
             this.AgreeOrderBtn.Name = "AgreeOrderBtn";
             this.AgreeOrderBtn.Size = new System.Drawing.Size(223, 37);
             this.AgreeOrderBtn.TabIndex = 29;

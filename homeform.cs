@@ -287,17 +287,113 @@ namespace CookieApp
 
         private void AgreeOrderBtn_Click(object sender, EventArgs e)
         {
-            
+            var sqlQuery = "UPDATE cookiedb.dbo.orderlist SET cookiedb.dbo.orderlist.status=2 WHERE cookiedb.dbo.orderlist.id = " + this.idOrderLabel.Text;
+            var statusQuery = 0;
+
+            using (SqlConnection conn = new SqlConnection(db.GetConnectionString()))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                statusQuery = cmd.ExecuteNonQuery();
+            }
+
+            if (statusQuery > 0) 
+            {
+                this.AgreeOrderBtn.Enabled = false;
+                this.AgreeOrderBtn.Text = "Вы уже получили заказ";
+                this.AgreeOrderBtn.ForeColor = Color.White;
+                MessageBox.Show("Спасибо, что выбрали нас. Ждем ещё ваших заказов");
+            }
+            else MessageBox.Show("Вася, ты проблема ходячая. Почему опять не работает?!");
         }
 
         private void choiseGoods_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            // MessageBox.Show(this.listOrder.SelectedItem.ToString());
+            FillDataOfOrder(Convert.ToInt32(this.listOrder.SelectedItem.ToString()));
+        }
+
+        private void FillDataOfOrder(int idOrder)
+        {
+            var sqlQuery = "SELECT * FROM cookiedb.dbo.orderlist WHERE cookiedb.dbo.orderlist.id=" + idOrder;
+
+            using (SqlConnection conn = new SqlConnection(db.GetConnectionString()))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+
+                    this.idOrderLabel.Text = Convert.ToString(reader.GetInt32(0));
+                    this.orderGoodsLabel.Text = this.GetNameOfGoods(reader.GetInt32(1));
+                    this.OrderCountLabel.Text = Convert.ToString(reader.GetInt32(2));
+                    this.OrderAdressLabel.Text = Convert.ToString(reader.GetString(3));
+                    this.OrderPhoneLabel.Text = Convert.ToString(reader.GetString(4));
+                    this.OrderDateLabel.Text = Convert.ToString(reader.GetValue(7));
+
+                    switch (reader.GetInt32(6))
+                    {
+                        case 0:
+                            this.AgreeOrderBtn.Enabled = false;
+                            this.AgreeOrderBtn.Text = "Ваш заказ в обработке";
+                            this.AgreeOrderBtn.ForeColor = Color.White;
+                            break;
+                        case 1:
+                            this.AgreeOrderBtn.Enabled = true;
+                            this.AgreeOrderBtn.Text = "Подтвердить получение";
+                            this.AgreeOrderBtn.ForeColor = Color.White;
+                            break;
+                        case 2:
+                            this.AgreeOrderBtn.Enabled = false;
+                            this.AgreeOrderBtn.Text = "Вы уже получили заказ";
+                            this.AgreeOrderBtn.ForeColor = Color.White;
+                            break;
+                        default:
+                            // ...
+                            break;
+                    }
+
+                    this.AgreeOrderBtn.Visible = true;
+
+
+                }
+
+                reader.Close();
+                conn.Close();
+            }
         }
 
         private void goOrderBtn_Click(object sender, EventArgs e)
         {
             ToInsertNewOrder();
+        }
+
+        private string GetNameOfGoods(int idGoods)
+        {
+            var sqlQuery = "SELECT * FROM cookiedb.dbo.goodslist WHERE cookiedb.dbo.goodslist.id=" + idGoods;
+            var nameGoods = "";
+
+            using (SqlConnection conn = new SqlConnection(db.GetConnectionString()))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    nameGoods = reader.GetString(1);
+                }
+
+                reader.Close();
+                conn.Close();
+            }
+
+            return nameGoods;
         }
     }
 }
