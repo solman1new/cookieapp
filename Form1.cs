@@ -32,6 +32,11 @@ namespace CookieApp
 
         }
 
+
+        ///
+        /// ПРОЧИТАЛ - ПЕТУХ :D ЫАЫАЫАЫАЫАЫАЫАЫАЫА
+        ///
+
         /// <summary>
         /// Check input fileds and check on exist in db
         /// </summary>
